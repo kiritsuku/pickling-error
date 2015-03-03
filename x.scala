@@ -30,7 +30,6 @@ object Attributed {
 
     override def pickle(a: Attributed[T], builder: PBuilder): Unit = {
       builder.hintTag(tag)
-      builder.hintStaticallyElidedType()
 
       builder.beginEntry(a)
       builder.putField("data", { b ⇒
