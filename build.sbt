@@ -4,9 +4,12 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-pickling" % "0.10.0"
 )
 initialCommands in console := """
-  import scala.pickling.Defaults._, scala.pickling.json._
   import java.io.File
-  import picklers._
+  import sbt.serialization._
 
   val att = Attributed(new File("/a/b/c"))
+  val p = SerializedValue(att)
+  //val json = SerializedValue(att).toJsonString
+  //val p = SerializedValue.fromJsonString(json)
+  val u = p.parse[Attributed[File]]
 """
